@@ -120,7 +120,7 @@ public class TanPlugin extends Plugin {
             switch (bankingState)
             {
                 case 1:
-                    client.addChatMessage(ChatMessageType.BROADCAST,"","Deposit","");
+                    client.addChatMessage(ChatMessageType.BROADCAST,"","Deposit?","");
                     if (getInventoryItem(config.method().product)!=null)
                     {
                         timeout += 1;
@@ -150,10 +150,10 @@ public class TanPlugin extends Plugin {
         if (Upstairs > 0) {
             switch (Upstairs) {
                 case 1:
-                    client.addChatMessage(ChatMessageType.BROADCAST, "", "clicktrader", "");
+                    client.addChatMessage(ChatMessageType.BROADCAST, "", "Click Trader", "");
                     setMenuEntry(event, ClickTrader());
                     NPCs.getNearest("Tanner").interact("Trade");
-                    timeout += 2;
+                    timeout += 1;
                     Upstairs = 2;
                     return;
                 case 2:
