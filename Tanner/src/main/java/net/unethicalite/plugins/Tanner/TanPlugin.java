@@ -121,7 +121,6 @@ public class TanPlugin extends Plugin {
             {
                 case 1:
                     client.addChatMessage(ChatMessageType.BROADCAST,"","Deposit","");
-                    timeout += 1;
                     if (getInventoryItem(config.method().product)!=null)
                     {
                         timeout += 1;

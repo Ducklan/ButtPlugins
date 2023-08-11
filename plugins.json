@@ -4,13 +4,22 @@
   "name": "Smelter",
   "description": "Shmelts",
   "id": "smelter-plugin",
-  "releases": [{
-    "date": "2023-08-08",
-    "sha512sum": "66CC396D9760D78963C3F9F503B991C04A21049EDEBCE724408D5EC03AB679F2FFF61EBDFED2EB6752EA9E10BA7B136A8A7E431FAEBF234EA36BB55E8B5E7A40",
-    "version": "0.0.8",
-    "url": "/blob/master/release/Smelter-0.0.8.jar?raw=true",
-    "requires": "^1.0.0"
-  }]
+  "releases": [
+    {
+      "date": "2023-08-08",
+      "sha512sum": "66CC396D9760D78963C3F9F503B991C04A21049EDEBCE724408D5EC03AB679F2FFF61EBDFED2EB6752EA9E10BA7B136A8A7E431FAEBF234EA36BB55E8B5E7A40",
+      "version": "0.0.8",
+      "url": "/blob/master/release/Smelter-0.0.8.jar?raw=true",
+      "requires": "^1.0.0"
+    },
+    {
+      "date": "2023-08-11",
+      "sha512sum": "ECE55C9818F9784CC9B02C0CF308C626DD4C8E12E7502BDB97E171AF6DD6627180B02147A6542BEA73BC2E80D2E0251EE1C885080937812459A8412876ECC24A",
+      "version": "0.0.1",
+      "url": "https://github.com/RJMxo/blob/master/release/Smelter-0.0.1.jar?raw=true",
+      "requires": "^1.0.0"
+    }
+  ]
 }, {
   "projectUrl": "",
   "provider": "",
@@ -19,7 +28,7 @@
   "id": "tannerxx-plugin",
   "releases": [{
     "date": "2023-08-08",
-    "sha512sum": "FEB2633B92DC87413B23F82422EAB32B1197EC906BAA9FB1D03034A2F353B1ADDEFB0F4C6C9CD8F6D684C4728FC6DEB7B12ADEF556871456009DFDB5373EE6D1",
+    "sha512sum": "2FCE4EB8F71887231D6FBCA92D0A329EA95C5C421E5A12A35283CA596F7BC9560B887719F61FE3B881A12B386D3083A4055E21C6AD27FC1C0119B56B0D95CFE1",
     "version": "0.0.1",
     "url": "/blob/master/release/Tanner-0.0.1.jar?raw=true",
     "requires": "^1.0.0"
