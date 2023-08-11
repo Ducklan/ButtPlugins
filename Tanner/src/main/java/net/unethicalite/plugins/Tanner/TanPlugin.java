@@ -20,6 +20,7 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+import net.runelite.client.plugins.tanner.TanConfig;
 import org.pf4j.Extension;
 import net.unethicalite.api.widgets.Dialog;
 import net.runelite.api.DialogOption;
@@ -45,15 +46,15 @@ public class TanPlugin extends Plugin {
     private int bankingState = 1;
     private int timeout = 0;
 
-    private int Upstairs = 0;
+    private int Upstairs = 2;
     @Inject
     private Client client;
 
     @Inject
-    private TanConfig config;
+    private net.runelite.client.plugins.tanner.TanConfig config;
 
     @Provides
-    TanConfig provideConfig(ConfigManager configManager) {
+    net.runelite.client.plugins.tanner.TanConfig provideConfig(ConfigManager configManager) {
         return configManager.getConfig(TanConfig.class);
     }
 
@@ -117,24 +118,27 @@ public class TanPlugin extends Plugin {
                 return;
             }
 
+
             switch (bankingState)
             {
                 case 1:
-                    client.addChatMessage(ChatMessageType.BROADCAST,"","Deposit?","");
+                    client.addChatMessage(ChatMessageType.BROADCAST,"","Deposit","");
+                    timeout += 1;
                     if (getInventoryItem(config.method().product)!=null)
                     {
                         timeout += 1;
-                        client.addChatMessage(ChatMessageType.BROADCAST,"","Actual Deposit","");
-                        setMenuEntry(event,depositProduct());
+                        client.addChatMessage(ChatMessageType.BROADCAST,"","Actual Deposit Deposit","");
+                        setMenuEntry(event, depositProduct());
                         bankingState = 2;
                         return;
                     }
                     bankingState = 2;
                 case 2:
-                    client.addChatMessage(ChatMessageType.BROADCAST,"","Withdraw","");
+                    client.addChatMessage(ChatMessageType.BROADCAST,"","withdrawall","");
                     setMenuEntry(event,withdrawAll());
                     bankingState = 3;
                     return;
+
                 case 3:
                     client.addChatMessage(ChatMessageType.BROADCAST,"","ClickUp bank logic","");
                     setMenuEntry(event,ClickUp());
@@ -142,7 +146,7 @@ public class TanPlugin extends Plugin {
                     bankingState = 1;
                     return;
 
-                //this resets to intial state whenever the bank is opened
+
             }
 
         }
@@ -150,10 +154,10 @@ public class TanPlugin extends Plugin {
         if (Upstairs > 0) {
             switch (Upstairs) {
                 case 1:
-                    client.addChatMessage(ChatMessageType.BROADCAST, "", "Click Trader", "");
+                    client.addChatMessage(ChatMessageType.BROADCAST, "", "clicktrader", "");
                     setMenuEntry(event, ClickTrader());
                     NPCs.getNearest("Tanner").interact("Trade");
-                    timeout += 1;
+                    timeout += 2;
                     Upstairs = 2;
                     return;
                 case 2:
@@ -176,7 +180,7 @@ public class TanPlugin extends Plugin {
         {
             if (Upstairs == 0) {
                 setMenuEntry(event, bank());
-                timeout +=1;
+                timeout += 1;
             }
         }
 
@@ -219,7 +223,6 @@ public class TanPlugin extends Plugin {
     private MenuEntry depositAll() {
         return createMenuEntry(1, MenuAction.CC_OP, -1, WidgetInfo.BANK_DEPOSIT_INVENTORY.getId(), false);
     }
-
 
     private MenuEntry withdrawAll() {
         int bankIndex = getBankIndex(config.method().material);
